@@ -1,0 +1,55 @@
+Question 1) 
+
+	mkdir a1
+	cd a1
+
+Question 2)
+
+	cd 
+	pwd
+
+Question 3)
+
+	id
+
+Question 4)
+	
+	cd
+	ls /proc/ | grep mem.*
+	cd
+	ls /proc/ | grep cpu.*
+	
+Question 5)
+
+	head /proc/meminfo
+
+Question 6)
+
+	head /proc/cpuinfo
+	tail /proc/cpuinfo
+	cat /proc/cpuinfo
+
+	
+Question 7)
+
+	cd
+	ls /etc | grep os-release
+	cat /etc/os-release
+
+Question 8)
+
+	cp /datasets/taxidata.tar.gz cs131
+	tar -xvzf taxidata.tar.gz
+	cd taxidata
+	more 2019-05.csv
+	awk -F',' 'NR > 1 && $2 ~ "2019-05-12" {sum+=$17; count++} END {print sum/count}' 2019-05.csv
+
+
+Question 9)
+
+	awk -F',' 'NR > 1 && $2 ~ "2019-05-12" {if ($17 > max) max=$17} END {print max}' 2019-05.csv
+
+Question 10)
+	
+	awk -F',' '$4 >= 3 {print $9}' 2019-05.csv | sort | uniq -c | sort -nr | head -n 10
+

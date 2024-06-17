@@ -1,0 +1,190 @@
+Question 1) 
+
+	No output
+
+Question 2)
+	
+	My home directory path is /mnt/scratch/danielcsu24
+
+	[danielcsu24@sjsu a1]$ cd
+	[danielcsu24@sjsu ~]$ pwd
+	/mnt/scratch/danielcsu24
+	
+Question 3)
+	
+	My UID is 1280. I belong to group 1281
+	
+	[danielcsu24@sjsu ~]$ id
+	uid=1280(danielcsu24) gid=1281(danielcsu24) groups=1281(danielcsu24)
+	
+
+Question 4)
+
+	The files containing memory information are iomem and meminfo	
+
+	[danielcsu24@sjsu ~]$ cd
+	[danielcsu24@sjsu ~]$ ls /proc/ | grep mem.*
+	iomem
+	meminfo
+
+
+	The file containing CPU information is cpuinfo
+	
+	[danielcsu24@sjsu ~]$ cd
+	[danielcsu24@sjsu ~]$ ls /proc/ | grep cpu.*
+	cpuinfo
+
+
+Question 5)
+
+	There is 69.69 GB of available memory
+
+	[danielcsu24@sjsu ~]$ head /proc/meminfo
+	MemTotal:       73080640 kB
+	MemFree:         4892416 kB
+	MemAvailable:   45124672 kB
+	Buffers:          437888 kB
+	Cached:         42443712 kB
+	SwapCached:            0 kB
+	Active:         19392384 kB
+	Inactive:       27817984 kB
+	Active(anon):    2489728 kB
+	Inactive(anon):  5489216 kB
+
+Question 6)
+
+	There are 250 processors on the server. The architecture name is POWER8. The processors speed is 3.425 GHz
+	
+	[danielcsu24@sjsu ~]$ head /proc/cpuinfo
+	processor       : 0
+	cpu             : POWER8 (architected), altivec supported
+	clock           : 3425.000000MHz
+	revision        : 2.1 (pvr 004b 0201)
+
+	processor       : 1
+	cpu             : POWER8 (architected), altivec supported
+	clock           : 3425.000000MHz
+	revision        : 2.1 (pvr 004b 0201)
+
+
+
+	[danielcsu24@sjsu ~]$ tail /proc/cpuinfo
+	processor       : 255
+	cpu             : POWER8 (architected), altivec supported
+	clock           : 3425.000000MHz
+	revision        : 2.1 (pvr 004b 0201)
+
+	timebase        : 512000000
+	platform        : pSeries
+	model           : IBM,8247-22L
+	machine         : CHRP IBM,8247-22L
+	MMU             : Hash
+
+
+[danielcsu24@sjsu ~]$ cat /proc/cpuinfo
+processor       : 0
+cpu             : POWER8 (architected), altivec supported
+clock           : 3425.000000MHz
+revision        : 2.1 (pvr 004b 0201)
+
+processor       : 1
+cpu             : POWER8 (architected), altivec supported
+clock           : 3425.000000MHz
+revision        : 2.1 (pvr 004b 0201)
+
+processor       : 2
+cpu             : POWER8 (architected), altivec supported
+clock           : 3425.000000MHz
+revision        : 2.1 (pvr 004b 0201)
+
+- processors 3-253 -
+
+processor       : 254
+cpu             : POWER8 (architected), altivec supported
+clock           : 3425.000000MHz
+revision        : 2.1 (pvr 004b 0201)
+
+processor       : 255
+cpu             : POWER8 (architected), altivec supported
+clock           : 3425.000000MHz
+revision        : 2.1 (pvr 004b 0201)
+
+timebase        : 512000000
+platform        : pSeries
+model           : IBM,8247-22L
+machine         : CHRP IBM,8247-22L
+MMU             : Hash
+	
+
+
+Question 7)
+
+	The operating system version is 8.6. The file os-release contains this information.
+
+[danielcsu24@sjsu ~]$ cd
+[danielcsu24@sjsu ~]$ ls /etc | grep os-release
+os-release
+
+
+[danielcsu24@sjsu ~]$ cat /etc/os-release
+NAME="Red Hat Enterprise Linux"
+VERSION="8.6 (Ootpa)"
+ID="rhel"
+ID_LIKE="fedora"
+VERSION_ID="8.6"
+PLATFORM_ID="platform:el8"
+PRETTY_NAME="Red Hat Enterprise Linux 8.6 (Ootpa)"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:redhat:enterprise_linux:8::baseos"
+HOME_URL="https://www.redhat.com/"
+DOCUMENTATION_URL="https://access.redhat.com/documentation/red_hat_enterprise_linux/8/"
+BUG_REPORT_URL="https://bugzilla.redhat.com/"
+
+REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 8"
+REDHAT_BUGZILLA_PRODUCT_VERSION=8.6
+REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
+REDHAT_SUPPORT_PRODUCT_VERSION="8.6"
+
+
+
+Question 8)
+
+	No output for copying data file.
+
+[danielcsu24@sjsu cs131_old]$ tar -xvzf taxidata.tar.gz
+taxidata/
+taxidata/2019-08.csv
+taxidata/2019-09.csv
+taxidata/2019-10.csv
+taxidata/2019-04.csv
+taxidata/2019-05.csv
+taxidata/2019-11.csv
+taxidata/2019-07.csv
+taxidata/2019-12.csv
+taxidata/2019-06.csv
+taxidata/2019-02.csv
+taxidata/2019-03.csv
+taxidata/2019-01.csv
+
+
+	Result: 18.5819	
+
+
+Question 9)
+
+	Result: 460.04
+
+	
+Question 10)
+	
+	Result:
+	39909 236.0
+  	37140 237.0
+  	36990 161.0
+  	33678 230.0
+  	28506 170.0
+  	27895 162.0
+  	27485 48.0
+  	26782 142.0
+  	25051 239.0
+
