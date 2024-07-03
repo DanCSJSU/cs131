@@ -1,3 +1,0 @@
-backup.sh <specified_directory> <target_directory>
-
-example: backup.sh important_dataset cs131_backup

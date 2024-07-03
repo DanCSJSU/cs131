@@ -1,0 +1,17 @@
+backup.sh <specified_directory> <target_directory>
+
+example: backup.sh important_dataset cs131_backup
+
+
+#!/bin/bash
+
+TARGET_DIR=$1
+BACKUP_LOCATION=$2
+TIMESTAMP=$(date +"%Y-%m-%d")
+BACKUP_NAME=$(basename "$TARGET_DIR")_$TIMESTAMP.tar.gz
+
+# Creating the Backup Directory
+tar -czf "$BACKUP_LOCATION/$BACKUP_NAME" -C "$TARGET_DIR" .
+
+# Notifying User of Completion
+echo "Backup of $TARGET_DIR completed at $BACKUP_LOCATION/$BACKUP_NAME"
