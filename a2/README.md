@@ -30,7 +30,7 @@ To extract the files located in data_folder, you can use:
 
 tar -xzf ~/backup_folder/data_folder-2024-07-03.tar.gz -C ~/backup_folder.
 
-##Terminal Example##
+## Terminal Example ##
 
 cd
 
