@@ -31,19 +31,27 @@ tar -xzf ~/backup_folder/data_folder-2024-07-03.tar.gz -C ~/backup_folder.
 ##Terminal Example##
 
 cd
+
 ls
+
 bin  cs131  cs131_backup  index.html  taxiData
 
 backup.sh taxiData cs131_backup
+
 Backup of taxiData completed at cs131_backup/taxiData_2024-07-03.tar.gz
 
 cd cs131_backup
+
 ls
+
 taxiData_2024-07-03.tar.gz
 
 tar -xzf ~/cs131_backup/taxiData_2024-07-03.tar.gz -C ~/cs131_backup
 
 ls
+
 dataset  taxiData_2024-07-03.tar.gz
+
 more dataset
+
 TAXI DATA GOES HERE
