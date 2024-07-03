@@ -26,6 +26,8 @@ Example: backup.sh data_folder backup_folder
 
 This saves a copy of data_folder to backup_folder. If you cd into backup_folder, then you will see a compressed and date-stamped copy of data_folder. 
 
+## Extract Files from Compressed Directory ##
+
 To extract the files located in data_folder, you can use: 
 
 tar -xzf ~/backup_folder/data_folder-2024-07-03.tar.gz -C ~/backup_folder.
