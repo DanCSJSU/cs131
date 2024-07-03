@@ -5,13 +5,12 @@ example: backup.sh important_dataset cs131_backup
 
 #!/bin/bash
 
-TARGET_DIR=$1
-BACKUP_LOCATION=$2
-TIMESTAMP=$(date +"%Y-%m-%d")
-BACKUP_NAME=$(basename "$TARGET_DIR")_$TIMESTAMP.tar.gz
+SPECIFIED_DIR=$1
+TARGET_DIR=$2
+DATESTAMP=$(date +"%d-%m-%Y")
+NAME=$(basename "$SPECIFIED_DIR")_$DATESTAMP.tar.gz
 
-# Creating the Backup Directory
-tar -czf "$BACKUP_LOCATION/$BACKUP_NAME" -C "$TARGET_DIR" .
+tar -czf "$TARGET_DIR/$NAME" -C "$SPECIFIED_DIR" .
 
-# Notifying User of Completion
-echo "Backup of $TARGET_DIR completed at $BACKUP_LOCATION/$BACKUP_NAME"
+echo "Backup of directory $SPECIFIED_DIR made at location $TARGET_DIR/$NAME"
+
