@@ -14,7 +14,9 @@ It compresses a specified directory and then saves it to a target directory.
 
 ## WHY IS THIS COMMAND USEFUL? ##
 
-This command is useful because it allows the user to quickly and easily create a backup of a directory. This ensures that an important directory is safely stored in a compressed format, saving on storage space and allowing easy restoration if necessary. The user can periodically use this command and may have many date-separated versions of a directory, in case an earlier version is needed.
+* Easily and quickly make backup of directories
+* Directories are stored in compressed format, saving on storage space and allowing easy restoration
+* Can be used periodically to make many date-stamped versions of directory (if earlier version is needed)
 
 ## HOW TO USE THIS COMMAND ##
 
