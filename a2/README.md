@@ -2,8 +2,8 @@
 
 backup.sh <specified_directory> <target_directory>
 
-specified = directory to be compressed and saved
-target = target location where compressed directory is saved
+* specified = directory to be compressed and saved
+* target = target location where compressed directory is saved
 
 
 ## PURPOSE OF THE COMMAND ##
