@@ -22,4 +22,28 @@ This command takes in the specified directory that will be saved in a target dir
 
 Example: backup.sh data_folder backup_folder
 
-This saves a copy of data_folder to backup_folder. If you cd into backup_folder, then you will see a compressed and date-stamped copy of data_folder. To extract the files/directories located in data_folder, you can use tar -xzf ~/backup_folder/data_folder-2024-07-03.tar.gz -C ~/backup_folder.
+This saves a copy of data_folder to backup_folder. If you cd into backup_folder, then you will see a compressed and date-stamped copy of data_folder. 
+
+To extract the files/directories located in data_folder, you can use: 
+tar -xzf ~/backup_folder/data_folder-2024-07-03.tar.gz -C ~/backup_folder.
+
+
+##Terminal Example##
+
+[danielcsu24@sjsu ~]$ cd
+[danielcsu24@sjsu ~]$ ls
+bin  cs131  cs131_backup  index.html  taxiData
+
+[danielcsu24@sjsu ~]$ backup.sh taxiData cs131_backup
+
+Backup of taxiData completed at cs131_backup/taxiData_2024-07-03.tar.gz
+
+[danielcsu24@sjsu ~]$ cd cs131_backup
+[danielcsu24@sjsu cs131_backup]$ ls
+taxiData_2024-07-03.tar.gz
+
+[danielcsu24@sjsu cs131_backup]$ tar -xzf ~/cs131_backup/taxiData_2024-07-03.tar.gz -C ~/cs131_backup
+[danielcsu24@sjsu cs131_backup]$ ls
+dataset  taxiData_2024-07-03.tar.gz
+[danielcsu24@sjsu cs131_backup]$ more dataset
+TAXI DATA GOES HERE
