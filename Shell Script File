@@ -13,6 +13,6 @@ if [ $? -eq 0 ]; then
 echo "Backup of directory $SPECIFIED_DIR made at location $TARGET_DIR/$NAME"
 
 else
-  echo "Failed to Create Backup at Target Directory"
+  echo "Failed to Create Backup at $TARGET_DIR/$NAME"
   exit 1
 fi
