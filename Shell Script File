@@ -1,0 +1,18 @@
+## Shell Script ##
+#!/bin/bash
+
+SPECIFIED_DIR=$1
+TARGET_DIR=$2
+DATESTAMP=$(date +"%d-%m-%Y")
+NAME=$(basename "$SPECIFIED_DIR")_$DATESTAMP.tar.gz
+
+tar -czf "$TARGET_DIR/$NAME" -C "$SPECIFIED_DIR" .
+
+if [ $? -eq 0 ]; then
+
+echo "Backup of directory $SPECIFIED_DIR made at location $TARGET_DIR/$NAME"
+
+else
+  echo "Failed to Create Backup at Target Directory"
+  exit 1
+fi
