@@ -1,7 +1,3 @@
-results.txt
-Assignment 3
-Daniel Chukhlebov
-
 5.28 221
 2.65 29294
 20.16 63
