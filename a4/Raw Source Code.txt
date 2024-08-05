@@ -1,0 +1,109 @@
+# ---------- Importing Dependencies ---------- #
+!pip3 install -U ucimlrepo
+from ucimlrepo import fetch_ucirepo
+import pandas as pd
+import numpy as np
+import seaborn as sns
+from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.linear_model import LinearRegression
+from sklearn import preprocessing
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+
+#Reading to df from CSV File. Can be replaced with code that uses CSV file from repo via ID or website via link
+df = pd.read_csv('/content/sample_data/winequality-white.csv', delimiter = ";")
+
+
+
+# ---------- Task 1 ---------- #
+
+print(df.columns)
+
+df.mean()
+
+print(df.min())
+print(df.max())
+
+print('25th')
+print(df.quantile(0.25))
+print('50th')
+print(df.quantile(0.5))
+print('75th')
+print(df.quantile(0.75))
+
+df.describe()
+
+
+
+# ---------- Task 2 ---------- #
+
+df.corr()
+
+
+
+# ---------- Task 3 ---------- #
+
+ax = df['quality'].plot.hist(edgecolor='black')
+ax.set_xlabel('Quality')
+ax.set_title('Distribution of Wine Quality')
+
+
+
+# ---------- Task 4 ---------- #
+
+scaler = StandardScaler()
+scaled_df = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
+
+plt.figure(figsize=(16, 10))
+sns.violinplot(data=scaled_df, inner="quartile", scale="width")
+plt.title('Violin Plots of All Wine Features', fontsize=16)
+plt.xticks(rotation=45, ha='right', fontsize=12)
+
+
+
+# ---------- Task 5 ---------- #
+
+plt.figure(figsize=(10, 6))
+plt.scatter(df['alcohol'], df['quality'], label='Values', color='teal')
+
+model = LinearRegression()
+model.fit(df[['alcohol']], df['quality'])
+
+fitted_line = model.predict(df[['alcohol']])
+plt.plot(df['alcohol'], fitted_line, color='red', label='Regression Line')
+
+plt.xlabel('Alcohol')
+plt.ylabel('Quality')
+plt.title('Quality Vs. Alcohol')
+plt.legend()
+plt.show()
+
+print(f'Intercept = {model.intercept_}')
+print(f'Coefficient = {model.coef_[0]}')
+
+RMSE = np.sqrt(mean_squared_error(df['quality'], fitted_line))
+R2 = r2_score(df['quality'], fitted_line)
+
+print(f'RMSE = {RMSE}')
+print(f'R^2 = {R2}')
+
+
+
+# ---------- Task 6 ---------- #
+
+X_multi = df[['volatile acidity', 'alcohol', 'density']]
+y = df['quality']
+
+model_multi = LinearRegression()
+model_multi.fit(X_multi, y)
+
+fitted_multi = model_multi.predict(X_multi)
+
+print(f'Intercept = {model_multi.intercept_}')
+print(f'Coefficients = {model_multi.coef_}')
+
+RMSE_multi = np.sqrt(mean_squared_error(y, fitted_multi))
+R2_multi = r2_score(y, fitted_multi)
+
+print(f'RMSE = {RMSE_multi}')
+print(f'R^2 = {R2_multi}')
