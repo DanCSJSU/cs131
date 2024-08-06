@@ -1,0 +1,118 @@
+# ---------- Importing Dependencies ---------- #
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+
+#Reading to dogData from CSV File
+dogData = pd.read_csv('/content/sample_data/dogs_dataset.csv')
+
+
+
+
+# ---------- Showing head of dataset ---------- #
+
+print("\nDog Characteristics:")
+print(dogData.head())
+
+
+
+# ---------- Printing metadata summary---------- #
+
+print("Description of 'named' characteristics:\n")
+print(dogData[['Breed', 'Color', 'Gender']].describe())
+
+print("\n\nDescription of 'numeric' characteristics:\n")
+print(dogData[['Age (Years)', 'Weight (kg)']].describe())
+
+
+
+
+# ---------- Ages by Breed plot ---------- #
+
+dogData['Breed'] = dogData['Breed'].astype('category')
+dogData['Age (Years)'] = pd.to_numeric(dogData['Age (Years)'], errors='coerce')
+
+plt.figure(figsize=(12, 8))
+sns.boxplot(x='Breed', y='Age (Years)', data=dogData)
+plt.xticks(rotation=90)
+
+plt.title('Distribution of Dog Ages by Breed')
+plt.xlabel('Breed')
+plt.ylabel('Age (Years)')
+plt.tight_layout()
+plt.show()
+
+
+
+
+# ---------- Weight by Breed plot ---------- #
+
+dogData['Breed'] = dogData['Breed'].astype('category')
+dogData['Weight (kg)'] = pd.to_numeric(dogData['Weight (kg)'], errors='coerce')
+
+plt.figure(figsize=(14, 8))
+sns.boxplot(x='Breed', y='Weight (kg)', data=dogData)
+plt.xticks(rotation=90)
+
+plt.title('Weight Distribution by Breed')
+plt.xlabel('Breed')
+plt.ylabel('Weight (kg)')
+plt.tight_layout()
+plt.show()
+
+
+
+# --------- Average Age and Weight by Breed plot ---------- #
+
+#using plotly library
+df_mean = dogData.groupby("Breed")[['Age (Years)', 'Weight (kg)']].mean().reset_index()
+df_mean.columns = ['Breed', 'Age_mean', 'Weight_mean']
+df_mean_sorted = df_mean.sort_values("Age_mean", ascending=False)
+
+fig = go.Figure()
+fig.add_trace(go.Scatter(
+    x=df_mean_sorted["Breed"], 
+    y=df_mean_sorted["Age_mean"], 
+    mode='markers+lines', 
+    name='Average Age',
+    marker=dict(color='blue', size=10),
+    line=dict(color='blue')
+))
+
+fig.add_trace(go.Scatter(
+    x=df_mean_sorted["Breed"], 
+    y=df_mean_sorted["Weight_mean"], 
+    mode='markers+lines', 
+    name='Average Weight',
+    marker=dict(color='red', size=10),
+    line=dict(color='red'),
+    yaxis='y2'
+))
+
+fig.update_layout(
+    title='Average Age and Weight by Breed',
+    xaxis_title='Breed',
+    yaxis_title='Average Age (Years)',
+    yaxis2=dict(
+        title='Average Weight (kg)',
+        overlaying='y',
+        side='right'
+    ),
+    xaxis_tickangle=-45
+)
+
+fig.show()
+
+# ---------- Popularity of Dog Breeds ---------- #
+
+plt.figure(figsize=(12, 8))
+sns.countplot(data=dogData, x='Breed', order=dogData['Breed'].value_counts().index, palette='viridis')
+
+plt.title('Popularity of Dog Breeds')
+plt.xlabel('Breed')
+plt.ylabel('Number of Dogs')
+plt.xticks(rotation=90)
+
+plt.tight_layout()
+plt.show()
