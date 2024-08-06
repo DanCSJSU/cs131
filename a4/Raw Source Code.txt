@@ -37,7 +37,11 @@ df.describe()
 
 # ---------- Task 2 ---------- #
 
-df.corr()
+correlation_matrix = df.corr()
+plt.figure(figsize=(12, 10))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt='.2f', linewidths=1)
+plt.title('Correlation of Wine Quality Factors')
+plt.show()
 
 
 
